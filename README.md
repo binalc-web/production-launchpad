@@ -1,7 +1,7 @@
 
-  # July - Hub Socrates
+  # N8N Bazar Landing Page
 
-  This is a code bundle for July - Hub Socrates. The original project is available at https://www.figma.com/design/taSixtW9D7QHX0EfoLeF6p/July---Hub-Socrates.
+  This is a code bundle for N8N Bazar Landing Page. The original project is available at https://www.figma.com/design/jfoOpTkDa8Uad6E7l2FVjY/N8N-Bazar-Landing-Page.
 
   ## Running the code
 
