@@ -1,9 +1,0 @@
-<svg width="180" height="32" viewBox="0 0 180 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <!-- Symbol: colored shapes (BSPBlueprint brand colors) -->
-  <rect x="0" y="4" width="8" height="8" rx="2" fill="#61A47A"/>
-  <rect x="10" y="4" width="8" height="8" rx="2" fill="#CF5A5B"/>
-  <rect x="20" y="4" width="8" height="8" rx="2" fill="#838485"/>
-  <rect x="30" y="4" width="8" height="8" rx="2" fill="#3B659C"/>
-  <!-- Wordmark: BSPBlueprint (white for dark backgrounds, e.g. email template logo container) -->
-  <text x="44" y="20" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="rgba(255, 255, 255, 1)">BSPBlueprint</text>
-</svg>
