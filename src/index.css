@@ -1,0 +1,16 @@
+#root {
+  width: 100%;
+}
+
+body {
+  top: 0 !important;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.skiptranslate iframe {
+  display: none !important;
+}
