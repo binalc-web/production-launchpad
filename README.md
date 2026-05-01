@@ -1,7 +1,7 @@
 
-  # N8N Bazar Landing Page
+  # Jetpack-workflow
 
-  This is a code bundle for N8N Bazar Landing Page. The original project is available at https://www.figma.com/design/jfoOpTkDa8Uad6E7l2FVjY/N8N-Bazar-Landing-Page.
+  This is a code bundle for Jetpack-workflow. The original project is available at https://www.figma.com/design/L0kCvcu9LUBnBRrFEwVFZh/Jetpack-workflow.
 
   ## Running the code
 
