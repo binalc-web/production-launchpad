@@ -1,3 +1,4 @@
+// DUMMY: placeholder meetings and AI suggestions. Replace with notetaker API at backend lock.
 export type MeetingStatus = 'suggestions-ready' | 'reviewed' | 'processing' | 'no-suggestions';
 export type SuggestionType = 'add-task' | 'create-project' | 'update-client' | 'log-note';
 export type SuggestionStatus = 'pending' | 'accepted' | 'dismissed';

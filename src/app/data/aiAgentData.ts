@@ -1,3 +1,4 @@
+// DUMMY: placeholder AI agent runs and queue. Replace with agent orchestration API at backend lock.
 export type AgentType = 'claude-excel' | 'claude-cowork';
 export type AgentRunStatus = 'Completed' | 'Failed' | 'Running' | 'Scheduled' | 'Pending';
 export type AgentTaskState = 'scheduled' | 'running' | 'completed' | 'failed';

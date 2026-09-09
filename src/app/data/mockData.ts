@@ -1,3 +1,4 @@
+// DUMMY: placeholder clients/projects/tasks store. Replace with API clients at backend lock.
 export type Priority = 'High' | 'Medium' | 'Low';
 export type ClientStatus = 'Active' | 'Inactive' | 'Prospect';
 export type EntityType = 'LLC' | 'S-Corp' | 'C-Corp' | 'Partnership' | 'Individual' | 'Trust' | 'Non-Profit';
