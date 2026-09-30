@@ -73,42 +73,8 @@ export default defineConfig({
     },
   },
   plugins: [
-{
-  name: "launchpad-suppress-test-file-reload",
-  configureServer: function(server) {
-    var extra = launchpadPreviewWatchIgnored;
-    var ign = server.watcher.options.ignored;
-    if (Array.isArray(ign)) {
-      if (!ign.some(function(i) { return i === extra; })) ign.push(extra);
-    } else if (ign) {
-      server.watcher.options.ignored = [ign, extra];
-    } else {
-      server.watcher.options.ignored = [extra];
-    }
-  },
-  handleHotUpdate: function(ctx) {
-    var p = String(ctx.file || "").replace(/\\/g, "/");
-    if (typeof launchpadPreviewWatchIgnored === "function" && launchpadPreviewWatchIgnored(p)) {
-      return [];
-    }
-    if (/\.(css|pcss|scss|sass|less)$/.test(p) && ctx.modules && ctx.modules.length) {
-      var cssOnlyNonApp = ctx.modules.every(function(mod) {
-        var importers = mod.importers ? Array.from(mod.importers) : [];
-        if (!importers.length) return true;
-        return importers.every(function(imp) {
-          var u = String((imp.url || imp.id || "")).replace(/\\/g, "/");
-          if (/\.(css|pcss|scss|sass|less)(\?|$)/.test(u)) return true;
-          if (typeof launchpadPreviewWatchIgnored === "function" && launchpadPreviewWatchIgnored(u)) {
-            return true;
-          }
-          return false;
-        });
-      });
-      if (cssOnlyNonApp) return [];
-    }
-    return undefined;
-  },
-},
+
+
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them
     react(),

@@ -17,3 +17,6 @@ ecosystem.preview.js
 .preview-package.sha256
 graphify-out/
 .understand-anything/
+.launchpad-runtime-deps.stamp
+.venv/
+__pycache__/

@@ -49,3 +49,5 @@ frontend/parameters.json
 !/.launchpad/migrate-screen-inventory.json
 __pycache__/
 .venv/
+.launchpad-runtime-deps.stamp
+/launchpad-qa/
