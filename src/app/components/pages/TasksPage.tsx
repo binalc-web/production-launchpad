@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import {
-  Search, Filter, Columns, Download, Edit3, X, ChevronDown, ChevronUp,
+  Search, Filter, Columns, Edit3, X, ChevronDown, ChevronUp,
   ArrowUpDown, Clock, Calendar, CheckCircle, Circle, MessageSquare,
   ExternalLink, Send, Plus, Bot, User, Zap, Check
 } from 'lucide-react';
 import { allTasks as initialTasks, TEAM_MEMBERS } from '../../data/mockData';
 import { Avatar } from '../Layout';
+import ExportButton from '../ExportButton';
 import { AgentBadge, AgentStatusBadge } from '../ui/AgentAvatar';
 import { type AgentType, AGENT_LABELS } from '../../data/aiAgentData';
 
@@ -170,9 +171,20 @@ export default function TasksPage() {
           <button className="flex items-center gap-1.5 px-3 py-1.5 border border-[#E5E7EB] rounded text-[13px] text-[#374151] hover:bg-[#F9FAFB]">
             <Columns size={13} /> Columns
           </button>
-          <button className="flex items-center gap-1.5 px-3 py-1.5 border border-[#E5E7EB] rounded text-[13px] text-[#374151] hover:bg-[#F9FAFB]">
-            <Download size={13} /> Export
-          </button>
+          <ExportButton
+            fileBase="tasks"
+            emptyHint="No tasks match your filters. Clear search or filters to export."
+            rows={filtered.map(t => ({
+              Task: t.name,
+              Client: t.client,
+              Project: t.project,
+              'Due Date': t.dueDate,
+              Status: t.status,
+              Assignee: delegations[t.id] ? AGENT_LABELS[delegations[t.id]] : t.assignee,
+              'Budgeted Time': t.budgetedTime,
+              Checklist: `${t.checklistCompleted}/${t.checklistTotal}`,
+            }))}
+          />
           <button className="flex items-center gap-1.5 px-3 py-1.5 border border-[#E5E7EB] rounded text-[13px] text-[#374151] hover:bg-[#F9FAFB]">
             <Edit3 size={13} /> Edit
           </button>

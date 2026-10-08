@@ -40,7 +40,8 @@ Target WCAG AA contrast on body text, visible focus states on nav and controls, 
 
 | Journey | Persona job | Entry | Success (preview) | Loading / empty / error |
 |---|---|---|---|---|
-| App entry under embed | Open firm workspace | `/` or `/embedded/<port>/` | Redirects to Projects; shell + sidebar render | yes — router basename; no blank 404 |
+| App entry under embed | Open firm workspace | `/` or `/embedded/<port>/` | Redirects to Projects; shell + sidebar render | yes — embed proxy owns basename; no blank 404 |
+| Export table data | Hand off tasks, client list, or agent audit log | Tasks → Export · Clients → Export · AI Agents → Export Audit Log | CSV of the rows currently shown (filters/search applied) downloads; inline "Downloaded N rows" confirmation | yes — "Exporting…" spinner; disabled with reason when no rows; inline error if download fails |
 | Browse projects | See engagement status | Nav → Projects | Project list from mock store | yes — list UI; empty/filter states in page |
 | Manage clients | Find client / contacts | Nav → Clients | Client list + detail panels | yes |
 | Work tasks | Update task progress | Nav → Tasks | Task board/list updates in local state | yes |

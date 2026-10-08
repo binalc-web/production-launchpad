@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  Bot, Plus, Download, Search, RefreshCw,
+  Bot, Plus, Search, RefreshCw,
   CheckCircle, AlertCircle, Clock, ExternalLink, ChevronDown,
   Eye, RotateCcw, FolderOpen, Calendar, X, Cloud, HardDrive,
   ArrowRight, Sparkles
@@ -8,6 +8,7 @@ import {
 import { useNavigate } from 'react-router';
 import { agentRuns, AGENT_LABELS, type AgentRun, type AgentRunStatus, type AgentType } from '../../data/aiAgentData';
 import { AgentBadge } from '../ui/AgentAvatar';
+import ExportButton from '../ExportButton';
 
 const RUN_STATUS_STYLES: Record<string, { bg: string; text: string; icon: typeof CheckCircle }> = {
   Completed: { bg: '#F0FDF4', text: '#16A34A', icon: CheckCircle },
@@ -442,9 +443,25 @@ export default function AIAgentsHub() {
               )}
 
               <div className="ml-auto">
-                <button className="flex items-center gap-1.5 px-3 py-1.5 border border-[#E5E7EB] rounded text-[12px] text-[#374151] hover:bg-[#F9FAFB]">
-                  <Download size={12} /> Export Audit Log
-                </button>
+                <ExportButton
+                  size="sm"
+                  label="Export Audit Log"
+                  fileBase="agent-audit-log"
+                  emptyHint="No runs match your filters. Clear filters to export."
+                  rows={filteredRuns.map(r => ({
+                    Date: r.date,
+                    Time: r.time,
+                    Client: r.clientName,
+                    Task: r.taskName,
+                    Template: r.templateName,
+                    Agent: AGENT_LABELS[r.agentType],
+                    Skill: r.skillName,
+                    Status: r.status,
+                    Duration: r.duration,
+                    Output: r.outputFile ?? '',
+                    'Failure Reason': r.failureReason ?? '',
+                  }))}
+                />
               </div>
             </div>
 

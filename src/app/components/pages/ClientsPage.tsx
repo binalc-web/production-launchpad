@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  Download, Upload, Plus, X, ChevronDown, ChevronUp, MoreHorizontal,
+  Upload, Plus, X, ChevronDown, ChevronUp, MoreHorizontal,
   ArrowUpDown, Phone, Mail, MapPin, Edit2, ChevronRight, User,
   Mic, Clock, Calendar, ExternalLink, Bot, Cloud, HardDrive, FolderOpen,
   AlertTriangle
@@ -9,6 +9,7 @@ import { clients as initialClients, TEAM_MEMBERS, type Client } from '../../data
 import { clientMeetings } from '../../data/aiNotetakerData';
 import { agentConfigs, agentRuns, AGENT_LABELS, type AgentType, type DataSource } from '../../data/aiAgentData';
 import { Avatar } from '../Layout';
+import ExportButton from '../ExportButton';
 import { AgentBadge } from '../ui/AgentAvatar';
 
 const PRIORITY_STYLES: Record<string, { color: string; dot: string }> = {
@@ -56,9 +57,21 @@ export default function ClientsPage() {
           <button className="flex items-center gap-1.5 px-3 py-1.5 border border-[#E5E7EB] rounded text-[13px] text-[#374151] hover:bg-[#F9FAFB] transition-colors">
             <Upload size={13} /> Import
           </button>
-          <button className="flex items-center gap-1.5 px-3 py-1.5 border border-[#E5E7EB] rounded text-[13px] text-[#374151] hover:bg-[#F9FAFB] transition-colors">
-            <Download size={13} /> Export
-          </button>
+          <ExportButton
+            fileBase="clients"
+            emptyHint="No clients yet. Create a client to export."
+            rows={clients.map(c => ({
+              'Client Name': c.name,
+              Priority: c.priority,
+              Status: c.status,
+              Assignee: c.assignee,
+              'Entity Type': c.entityType,
+              'Fiscal Year End': c.fiscalYearEnd,
+              'Last Edited': c.lastEdited,
+              'Primary Contact': c.contacts[0]?.name ?? '',
+              Services: c.services.join('; '),
+            }))}
+          />
           <button className="flex items-center gap-1.5 px-3 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-[13px] font-medium rounded transition-colors">
             <Plus size={13} /> Create Client
           </button>
