@@ -9,9 +9,9 @@ import {
 import {
   LAUNCHPAD_EMBED_BASENAME_EXPR,
   rewriteReactRouterBasename,
-} from "../../shared/preview-rewrite/reactRouterBasename.js";
-import { rewriteVueRouterBase } from "../../shared/preview-rewrite/vueRouterBase.js";
-import { rewriteTanstackRouterBasepath } from "../../shared/preview-rewrite/tanstackRouterBasepath.js";
+} from "../shared/preview-rewrite/reactRouterBasename.js";
+import { rewriteVueRouterBase } from "../shared/preview-rewrite/vueRouterBase.js";
+import { rewriteTanstackRouterBasepath } from "../shared/preview-rewrite/tanstackRouterBasepath.js";
 
 export {
   LAUNCHPAD_EMBED_BASENAME_EXPR,

@@ -17,7 +17,7 @@ import {
 import {
   buildEmbedUpstreamConnectPath,
   shouldForwardUnstrippedEmbedPath,
-} from "../../shared/preview-rewrite/embedUpstreamPath.js";
+} from "../shared/preview-rewrite/embedUpstreamPath.js";
 
 /** Fix module MIME when upstream/relay returns application/octet-stream (UAT Docker relay). */
 function applyEmbedModuleContentType(headers, requestPath) {

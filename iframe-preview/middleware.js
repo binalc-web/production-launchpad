@@ -12,7 +12,7 @@ import {
 import { parseEmbeddedPortRequest, stripEmbedFrameParam } from "./rewritePaths.js";
 import { proxyEmbeddedRequest } from "./embedProxyHandler.js";
 import { createEmbeddedRootAssetMiddleware } from "./rootAssetMiddleware.js";
-import { buildEmbedUpstreamConnectPath } from "../../shared/preview-rewrite/embedUpstreamPath.js";
+import { buildEmbedUpstreamConnectPath } from "../shared/preview-rewrite/embedUpstreamPath.js";
 
 const EMBED_PORT_KEY = Symbol("launchpadEmbedPort");
 

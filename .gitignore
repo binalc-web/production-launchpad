@@ -1,7 +1,7 @@
 
 node_modules/
 .platform/
-.launchpad/
+/.launchpad/*
 .launchpad/**
 .spa-build/
 dist/
@@ -29,5 +29,23 @@ __pycache__/
 /.cursor/hooks/subagent-monitor-stop.sh
 /.cursor/rules/launchpad-*
 /.cursor/skills/launchpad-*/
-graphify-out/
-.understand-anything/
+/graphify-out/
+/.understand-anything/
+
+backend/parameters.json
+Frontend/parameters.json
+frontend/parameters.json
+
+# Launchpad local credentials (do not commit)
+**/.env
+!**/.env.example
+**/terraform.tfvars
+**/credentials.json
+core
+core.*
+*.core
+!**/core.py
+
+# Launchpad agent artifacts (do not commit)
+!/.launchpad/migrate-screen-inventory.json
+/launchpad-qa/
