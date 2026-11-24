@@ -1,0 +1,97 @@
+@import "./feedback-embed-host-reset.css";
+
+/* Positioning shells and dialog wrapper must stay invisible on the host page. */
+.launchpad-feedback-surface[data-launchpad-feedback-mount],
+.launchpad-feedback-surface[data-launchpad-feedback-overlay-root],
+.launchpad-feedback-surface.launchpad-feedback-dialog,
+[data-feedback-widget-pick-overlay] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Report Issue + Record screen launcher buttons */
+.launchpad-feedback-surface [data-feedback-widget-button],
+.launchpad-feedback-surface [data-feedback-widget-record-button],
+.launchpad-feedback-surface [data-feedback-widget-pick-button] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-color: var(--feedback-report) !important;
+  color: var(--primary-foreground, oklch(0.985 0 0)) !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+  line-height: inherit !important;
+}
+
+.launchpad-feedback-surface [data-feedback-widget-button]:hover:not(:disabled),
+.launchpad-feedback-surface [data-feedback-widget-record-button]:hover:not(:disabled),
+.launchpad-feedback-surface [data-feedback-widget-pick-button]:hover:not(:disabled) {
+  background-color: var(--feedback-report-hover) !important;
+}
+
+.launchpad-feedback-surface [data-feedback-widget-button]:disabled,
+.launchpad-feedback-surface [data-feedback-widget-record-button]:disabled,
+.launchpad-feedback-surface [data-feedback-widget-pick-button]:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+}
+
+/* Send Feedback modal panel */
+.launchpad-feedback-surface [data-feedback-widget-panel] {
+  background-color: var(--background, oklch(1 0 0)) !important;
+  color: var(--foreground, oklch(0.145 0 0)) !important;
+}
+
+.launchpad-feedback-surface [data-feedback-widget-panel] h2,
+.launchpad-feedback-surface [data-feedback-widget-panel] h3 {
+  color: var(--foreground, oklch(0.145 0 0)) !important;
+  font-weight: 600 !important;
+}
+
+.launchpad-feedback-surface .launchpad-feedback-dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.5) !important;
+}
+
+/**
+ * Enforced borders and fills for shadcn fields — issue type, email, description.
+ */
+.launchpad-feedback-surface [data-slot="input"],
+.launchpad-feedback-surface [data-slot="textarea"],
+.launchpad-feedback-surface [data-slot="select-trigger"] {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(--border, oklch(0.922 0 0)) !important;
+  background-color: var(--background, oklch(1 0 0)) !important;
+  color: var(--foreground, oklch(0.145 0 0)) !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.launchpad-feedback-surface [data-slot="input"],
+.launchpad-feedback-surface [data-slot="select-trigger"] {
+  padding: 0.5rem 0.75rem !important;
+  min-height: 2.25rem !important;
+}
+
+.launchpad-feedback-surface [data-slot="textarea"] {
+  padding: 0.5rem 0.75rem !important;
+  min-height: 200px !important;
+  resize: none !important;
+}
+
+.launchpad-feedback-surface [data-slot="select-content"] {
+  background-color: var(--popover, oklch(1 0 0)) !important;
+  color: var(--popover-foreground, oklch(0.145 0 0)) !important;
+  border: 1px solid var(--border, oklch(0.922 0 0)) !important;
+  box-shadow:
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+.launchpad-feedback-surface [data-slot="label"] {
+  color: var(--foreground, oklch(0.145 0 0)) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}

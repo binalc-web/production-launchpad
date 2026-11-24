@@ -1,15 +1,43 @@
+<!doctype html>
+<html lang="en" translate="no" class="notranslate">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>LaunchPad</title>
+    <link rel="icon" type="image/png" href="/fevicon.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/fevicon.png" sizes="16x16" />
+    <script>
+      try {
+        if (localStorage.getItem("lp-color-scheme") === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    </script>
+    <script>
+      window.launchpadFeedbackConfig = {
+        project: "339ab2a0-dded-4937-a960-e84c9fa61ea0",
+        source: "snippet",
+      };
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Jetpack-workflow</title>
-    </head>
+      !(function (e, r) {
+        if (e.__LaunchpadFeedback) return;
+        e.__LaunchpadFeedback = 1;
+        var s = r.createElement("script");
+        s.async = 1;
+        s.src = "https://launchpad.yorkdevs.link/launchpad-feedback-shim.js";
+        var i = r.getElementsByTagName("script")[0];
+        i && i.parentNode
+          ? i.parentNode.insertBefore(s, i)
+          : (r.head || r.documentElement).appendChild(s);
+      })(window, document);
+    </script>
+  </head>
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+  <body>
+    <div id="root"></div>
+    <script type="module" src="src/index.jsx"></script>
+  </body>
+</html>

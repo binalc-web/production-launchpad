@@ -1,0 +1,45 @@
+/**
+ * Minimal reset inside the shadow-isolated embed surface.
+ * Do not reset button/input backgrounds here — chrome overrides own widget styling.
+ */
+.launchpad-feedback-surface,
+.launchpad-feedback-surface *,
+.launchpad-feedback-surface *::before,
+.launchpad-feedback-surface *::after {
+  box-sizing: border-box;
+}
+
+.launchpad-feedback-surface {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--foreground, oklch(0.145 0 0));
+  --feedback-report: oklch(0.55 0.22 27);
+  --feedback-report-hover: oklch(0.48 0.2 27);
+}
+
+.launchpad-feedback-surface h1,
+.launchpad-feedback-surface h2,
+.launchpad-feedback-surface h3,
+.launchpad-feedback-surface h4,
+.launchpad-feedback-surface h5,
+.launchpad-feedback-surface h6,
+.launchpad-feedback-surface p {
+  margin: 0;
+}
+
+.launchpad-feedback-surface img,
+.launchpad-feedback-surface svg {
+  display: block;
+  max-width: 100%;
+}

@@ -1,0 +1,10 @@
+{
+  "detector": {
+    "ignoreRules": ["broken-image"],
+    "ignoreFiles": [
+      "frontend/src/features/feedback-widget/services/screenshot.service.js",
+      "src/features/feedback-widget/services/screenshot.service.js"
+    ],
+    "ignoreValues": []
+  }
+}

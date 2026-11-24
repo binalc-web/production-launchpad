@@ -1,0 +1,286 @@
+/**
+ * LaunchPad console design system — aligned with ProjectConsoleSidebar tokens.
+ * Apply via [data-console-content] on scroll regions and shared UI primitives.
+ */
+
+:root {
+  /* Surfaces — 3-tier: canvas → panel → inset grouped content */
+  --surface-canvas: oklch(0.975 0 0);
+  --surface-panel: oklch(1 0 0);
+  --surface-inset: oklch(100% 0.00011 271.152);
+  --surface-inset-border: color-mix(in oklch, var(--foreground) 11%, transparent);
+  --surface-elevated: oklch(1 0 0);
+  --surface-muted: oklch(0.97 0 0);
+
+  /* Typography scale (matches sidebar nav) */
+  --text-page-title: 1rem; /* 16px */
+  --text-section-title: 0.875rem; /* 14px */
+  --text-body: 0.84375rem; /* 13.5px */
+  --text-description: 0.8125rem; /* 13px */
+  --text-caption: 0.75rem; /* 12px */
+  --text-overline: 0.6875rem; /* 11px */
+
+  /* Shadows — popovers/dialogs only; content surfaces stay flat */
+  --shadow-popover: 0 8px 24px oklch(0 0 0 / 10%), 0 2px 8px oklch(0 0 0 / 6%);
+
+  /* Spacing rhythm */
+  --space-page-y: 1.25rem; /* 20px — p-5 */
+  --space-page-x: 1.25rem;
+  --space-section: 1.25rem; /* space-y-5 */
+  --space-stack: 1rem; /* space-y-4 */
+}
+
+.dark {
+  --surface-canvas: oklch(0.145 0 0);
+  --surface-panel: oklch(0.205 0 0);
+  --surface-inset: oklch(0.235 0 0);
+  --surface-inset-border: color-mix(in oklch, var(--foreground) 18%, transparent);
+  --surface-elevated: oklch(0.235 0 0);
+  --surface-muted: oklch(0.269 0 0);
+
+  --shadow-popover: 0 8px 24px oklch(0 0 0 / 40%), 0 2px 8px oklch(0 0 0 / 25%);
+}
+
+/* Align theme tokens with console surfaces */
+:root {
+  --background: var(--surface-canvas);
+  /* Service panels sit on the canvas — white on light gray */
+  --card: var(--surface-panel);
+  --muted: var(--surface-muted);
+  /* Floating UI (dialogs, menus) sits above panels */
+  --popover: var(--surface-elevated);
+}
+
+.dark {
+  --background: var(--surface-canvas);
+  --card: var(--surface-panel);
+  --muted: var(--surface-muted);
+  --popover: var(--surface-elevated);
+}
+
+@layer components {
+  .ds-overline {
+    font-family: var(--font-mono);
+    font-size: var(--text-overline);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: color-mix(in oklch, var(--muted-foreground) 70%, transparent);
+  }
+
+  .ds-page-title {
+    font-size: var(--text-page-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+    line-height: 1.35;
+  }
+
+  .ds-section-title {
+    font-size: var(--text-section-title);
+    font-weight: 600;
+    color: var(--foreground);
+    line-height: 1.4;
+  }
+
+  .ds-body {
+    font-size: var(--text-body);
+    line-height: 1.5;
+    color: var(--foreground);
+  }
+
+  .ds-description {
+    font-size: var(--text-description);
+    line-height: 1.55;
+    color: var(--muted-foreground);
+  }
+
+  .ds-caption {
+    font-size: var(--text-caption);
+    line-height: 1.45;
+    color: var(--muted-foreground);
+  }
+
+  .ds-card {
+    border-radius: var(--radius-lg);
+    background: var(--card);
+  }
+
+  .ds-surface {
+    border-radius: var(--radius-lg);
+    background: var(--card);
+  }
+
+  /* Grouped content inside a service panel — hairline border + tinted fill */
+  .ds-inset {
+    border-radius: var(--radius-lg);
+    background: var(--surface-inset);
+    border: 1px solid var(--surface-inset-border);
+    box-shadow: none;
+  }
+
+  .ds-surface-muted {
+    border-radius: var(--radius-lg);
+    background: var(--surface-inset);
+    border: 1px solid var(--surface-inset-border);
+  }
+}
+
+@layer base {
+  [data-console-content] {
+    font-size: var(--text-body);
+    line-height: 1.5;
+    color: var(--foreground);
+    /* Dividers + form chrome — softer than inset borders, still visible */
+    --border: color-mix(in oklch, var(--foreground) 9%, transparent);
+    --input: color-mix(in oklch, var(--foreground) 11%, transparent);
+  }
+
+  .dark [data-console-content] {
+    --border: color-mix(in oklch, var(--foreground) 16%, transparent);
+    --input: color-mix(in oklch, var(--foreground) 20%, transparent);
+  }
+
+  [data-console-content]
+    :where(:not([data-chat-surface], [data-chat-surface] *)) h1 {
+    font-size: var(--text-page-title);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+    line-height: 1.35;
+  }
+
+  [data-console-content]
+    :where(:not([data-chat-surface], [data-chat-surface] *)) h2 {
+    font-size: var(--text-section-title);
+    font-weight: 600;
+    color: var(--foreground);
+    line-height: 1.4;
+  }
+
+  [data-console-content]
+    :where(:not([data-chat-surface], [data-chat-surface] *)) h3,
+  [data-console-content]
+    :where(:not([data-chat-surface], [data-chat-surface] *)) h4 {
+    font-size: var(--text-body);
+    font-weight: 600;
+    color: var(--foreground);
+    line-height: 1.45;
+  }
+
+  [data-console-content]
+    :where(:not([data-chat-surface], [data-chat-surface] *)) p {
+    font-size: var(--text-description);
+    line-height: 1.55;
+    color: var(--muted-foreground);
+  }
+
+  /* Chat panels set bubble-level foreground tokens — inherit instead of console muted body copy. */
+  [data-chat-surface] :where(p, h1, h2, h3, h4):not([class*="text-"]) {
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  /* Sheets / inline bubbles that use semantic foreground on the bubble wrapper. */
+  [data-console-content]
+    :where([class*="text-primary-foreground"], [class*="text-secondary-foreground"])
+    :where(p, h1, h2, h3, h4):not([class*="text-"]) {
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  [data-console-content] :where(.chat-user-bubble-text) {
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
+/*
+ * Inset surfaces inside the white service panel — unlayered to beat Tailwind utilities.
+ * Hairline border + tinted fill (Apple grouped-content pattern), not flat borderless boxes.
+ * AI Chat ([data-chat-surface]) is excluded — keeps its original borders, shadows, and fills.
+ */
+[data-console-content]
+  :where(:not([data-chat-surface], [data-chat-surface] *)):is([data-slot="card"], .ds-inset) {
+  background: var(--surface-inset) !important;
+  border: 1px solid var(--surface-inset-border) !important;
+  box-shadow: none !important;
+}
+
+/* Rounded blocks using muted fills — timeline cards, profile sections, doc workspace, etc. */
+[data-console-content]
+  :where(:not([data-chat-surface], [data-chat-surface] *)):is(div, section, article, aside, li):is(
+    .rounded-sm,
+    .rounded-md,
+    .rounded-lg,
+    .rounded-xl,
+    .rounded-2xl
+  )[class*="bg-muted/"]:not([class*="bg-muted/40"]):not([class*="bg-muted/50"]):not(
+    .border-dashed
+  ) {
+  background: var(--surface-inset) !important;
+  border: 1px solid var(--surface-inset-border) !important;
+  box-shadow: none !important;
+}
+
+/* Legacy bordered white blocks — promote to inset tier */
+[data-console-content]
+  :where(:not([data-chat-surface], [data-chat-surface] *)):is(div, section, article, aside, li):is(
+    .border.rounded-md,
+    .border.rounded-lg,
+    .border.rounded-xl,
+    .border.rounded-2xl
+  ):is(.bg-card, .bg-background):not([class*="bg-muted"]):not(.border-dashed):not(
+    [class*="border-primary"]
+  ):not([class*="border-destructive"]) {
+  background: var(--surface-inset) !important;
+  border: 1px solid var(--surface-inset-border) !important;
+  box-shadow: none !important;
+}
+
+/* Preserve intentional left accent stripes on backlog/epic cards */
+[data-console-content] :where(div, section, article, li)[class*="border-l-4"] {
+  border-left-width: 4px !important;
+  border-left-style: solid !important;
+}
+
+[data-console-content] :where(div, section, article, li)[class*="border-l-2"] {
+  border-left-width: 2px !important;
+  border-left-style: solid !important;
+}
+
+[data-console-content]
+  :where(:not([data-chat-surface], [data-chat-surface] *)):is(
+    [data-slot="input"],
+    [data-slot="textarea"]
+  ) {
+  border-color: var(--input) !important;
+  background: color-mix(in oklch, var(--muted) 38%, var(--card)) !important;
+  box-shadow: none !important;
+}
+
+[data-console-content]
+  :where(:not([data-chat-surface], [data-chat-surface] *))[data-slot="select-trigger"] {
+  border-color: var(--input) !important;
+  box-shadow: none !important;
+}
+
+[data-console-content]
+  :where(
+    :not([data-chat-surface], [data-chat-surface] *)
+  )[data-slot="button"][data-variant="outline"] {
+  border-color: var(--input) !important;
+  background: color-mix(in oklch, var(--muted) 28%, var(--card)) !important;
+  box-shadow: none !important;
+}
+
+[data-console-content]
+  :where(
+    :not([data-chat-surface], [data-chat-surface] *)
+  )[data-slot="badge"][data-variant="outline"] {
+  border-color: var(--input) !important;
+  background: color-mix(in oklch, var(--muted) 35%, var(--card)) !important;
+}

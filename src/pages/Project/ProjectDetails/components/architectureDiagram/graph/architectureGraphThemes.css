@@ -1,0 +1,204 @@
+/* Scoped theme tokens for the architecture graph explorer */
+
+.architecture-graph-root {
+  --arch-canvas-bg: color-mix(in oklch, var(--muted) 35%, transparent);
+  --arch-card-bg: var(--card);
+  --arch-border: var(--border);
+  --arch-text: var(--foreground);
+  --arch-muted: var(--muted-foreground);
+  --arch-accent: var(--primary);
+  /* --border is oklch — do not wrap in hsl(); use primary for visible edge strokes */
+  --arch-edge: color-mix(in oklch, var(--primary) 55%, var(--foreground) 45%);
+  --arch-edge-label: var(--muted-foreground);
+}
+
+.architecture-graph-root.arch-theme-dark {
+  /* Arch-specific tokens */
+  --arch-canvas-bg: #0a0a0a;
+  --arch-card-bg: #1a1a1a;
+  --arch-border: rgba(212, 165, 116, 0.2);
+  --arch-text: #f5f0eb;
+  --arch-muted: #a39787;
+  --arch-accent: #d4a574;
+  --arch-edge-label: #a39787;
+  --arch-edge: rgba(212, 165, 116, 0.25);
+
+  /* Remap shadcn semantic tokens so chrome UI inherits dark surfaces */
+  --background: #0a0a0a;
+  --foreground: #f5f0eb;
+  --card: #1a1a1a;
+  --card-foreground: #f5f0eb;
+  --popover: #1a1a1a;
+  --popover-foreground: #f5f0eb;
+  --primary: #d4a574;
+  --primary-foreground: #0a0a0a;
+  --secondary: #262626;
+  --secondary-foreground: #f5f0eb;
+  --muted: #262626;
+  --muted-foreground: #a39787;
+  --accent: #2a2a2a;
+  --accent-foreground: #f5f0eb;
+  --border: rgba(212, 165, 116, 0.2);
+  --input: rgba(212, 165, 116, 0.15);
+  --ring: #d4a574;
+
+  color: var(--arch-text);
+}
+
+.architecture-graph-root.arch-theme-dark .arch-graph-node {
+  background: var(--arch-card-bg);
+  border-color: var(--arch-border);
+  color: var(--arch-text);
+}
+
+.architecture-graph-root.arch-theme-dark .arch-graph-sidebar {
+  background: #141414;
+  border-color: var(--arch-border);
+}
+
+.architecture-graph-root .arch-graph-sidebar [data-slot="tabs-content"][data-state="active"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.architecture-graph-root.arch-theme-dark .arch-graph-heading {
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+}
+
+/* Breadcrumb pill — explicit surface for navigation chrome */
+.architecture-graph-root.arch-theme-dark .arch-breadcrumb {
+  background: var(--arch-card-bg);
+  border-color: var(--arch-border);
+  color: var(--arch-text);
+}
+
+/* Toolbar outline buttons — readable icons on dark surfaces */
+.architecture-graph-root.arch-theme-dark [data-slot="button"].border {
+  background: var(--arch-card-bg);
+  border-color: var(--arch-border);
+  color: var(--arch-text);
+}
+
+.architecture-graph-root.arch-theme-dark [data-slot="button"].border:hover {
+  background: var(--accent);
+  color: var(--arch-text);
+}
+
+.architecture-graph-root.arch-theme-dark [data-slot="button"].border svg {
+  color: var(--arch-text);
+}
+
+/* Sidebar tabs — inactive/active contrast on muted track */
+.architecture-graph-root.arch-theme-dark [data-slot="tabs-list"] {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+
+.architecture-graph-root.arch-theme-dark [data-slot="tabs-trigger"] {
+  color: var(--arch-muted);
+}
+
+.architecture-graph-root.arch-theme-dark [data-slot="tabs-trigger"]:hover {
+  color: var(--arch-text);
+}
+
+.architecture-graph-root.arch-theme-dark [data-slot="tabs-trigger"][data-state="active"] {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* File path code block in INFO panel */
+.architecture-graph-root.arch-theme-dark code.rounded {
+  background: var(--muted);
+  color: var(--arch-text);
+  border: 1px solid var(--arch-border);
+}
+
+/* File explorer rows — ensure file/folder names are readable */
+.architecture-graph-root.arch-theme-dark .arch-graph-sidebar button span {
+  color: var(--arch-text);
+}
+
+/* Complexity labels — dark: Tailwind variants don't apply under arch-theme-dark */
+.architecture-graph-root.arch-theme-dark .text-emerald-600 {
+  color: #34d399;
+}
+
+.architecture-graph-root.arch-theme-dark .text-amber-600 {
+  color: #fbbf24;
+}
+
+.architecture-graph-root.arch-theme-dark .text-red-600 {
+  color: #f87171;
+}
+
+/* React Flow MiniMap — dark surface with visible node previews */
+.architecture-graph-root.arch-theme-dark .react-flow__minimap {
+  background: var(--arch-card-bg);
+  border-color: var(--arch-border);
+}
+
+.architecture-graph-root.arch-theme-dark .react-flow__minimap-node {
+  fill: #3a3a3a;
+  stroke: var(--arch-accent);
+}
+
+.architecture-graph-root.arch-theme-dark .react-flow__minimap-mask {
+  fill: rgba(10, 10, 10, 0.65);
+}
+
+.architecture-graph-root .arch-graph-canvas {
+  background-color: var(--arch-canvas-bg);
+}
+
+.architecture-graph-root .react-flow__edge-text {
+  pointer-events: none;
+}
+
+.architecture-graph-root .react-flow__edge-path {
+  stroke: var(--arch-edge);
+  stroke-width: 2;
+}
+
+.architecture-graph-root .react-flow__arrowhead polyline,
+.architecture-graph-root .react-flow__arrowhead polygon {
+  fill: var(--arch-edge);
+  stroke: var(--arch-edge);
+}
+
+.architecture-graph-root .arch-node-glow {
+  box-shadow:
+    0 0 0 1px var(--arch-accent),
+    0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.architecture-graph-root.arch-theme-dark .arch-node-glow {
+  box-shadow:
+    0 0 0 1px var(--arch-accent),
+    0 0 24px rgba(212, 165, 116, 0.25);
+}
+
+.architecture-graph-root .arch-tour-glow {
+  box-shadow:
+    0 0 0 1px var(--primary),
+    0 0 20px color-mix(in oklch, var(--primary) 35%, transparent);
+}
+
+.architecture-graph-root.arch-theme-dark .arch-tour-glow {
+  box-shadow:
+    0 0 0 1px #fbbf24,
+    0 0 24px rgba(251, 191, 36, 0.3);
+}
+
+.architecture-graph-root .tour-markdown code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.architecture-graph-root.arch-theme-dark::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

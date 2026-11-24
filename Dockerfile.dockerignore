@@ -1,0 +1,35 @@
+# Replaces root .dockerignore for frontend/Dockerfile (context: repo root).
+# Keep only frontend/ + shared/ — shrinks context vs sending backend/agent trees.
+
+.git
+.github
+**/.git
+
+**/node_modules
+**/dist
+**/build
+**/.next
+**/coverage
+**/.turbo
+**/.cache
+
+backend
+cursor-cloud-agent
+mcp-server
+graphify-out
+launchpad-frontend
+qa-automation
+launchpad-infra-module
+figma-plugin
+open-design
+specs
+docs
+scripts
+.cursor
+.specify
+
+*.log
+**/.DS_Store
+.env
+.env.*
+!**/.env.example
